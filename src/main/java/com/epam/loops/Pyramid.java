@@ -12,6 +12,7 @@ public class Pyramid {
                     pyramid += ((cathetusLength + 1) - a);
                 } else {
                     pyramid += ((a + 1) - cathetusLength);
+                    break;
                 }
             }
             System.out.println(pyramid);

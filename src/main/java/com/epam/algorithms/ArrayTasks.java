@@ -124,26 +124,30 @@ public class ArrayTasks {
      */
     public int[][] sortRaggedArray(int[][] arr) {
         int[][] sortedArrays = new int[arr.length][];
-        for(int i =0; i<= arr.length-1; i++){
-            int[]sortedArray = new int[arr[i].length];
-            for(int b = 0; b <=arr[i].length-1; b++){
-                int sortID =0;
-                for(int x=0; x<=arr[i].length-1; x++){
-                    if(arr[i][b]>arr[i][x]){
-                        sortID++;
+        for(int i =0; i< arr.length; i++){
+
+            for(int j = i + 1; j< arr.length; j++) {
+                int[] temp;
+                if(arr[i].length>arr[j].length){
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+            int[]smallArray = new int[arr[i].length];
+            smallArray = arr[i];
+            for(int b = 0; b < smallArray.length; b++){
+                for(int j = b+1; j<smallArray.length; j++){
+                    int temp = 0;
+                    if(smallArray[b]>smallArray[j]){
+                        temp = smallArray[b];
+                        smallArray[b] = smallArray[j];
+                        smallArray[j] = temp;
                     }
                 }
-                sortedArray[sortID] = arr[i][b];
-            }
-            for(int a = 0; a<= arr.length-1;a++){
-                int id = 0;
-                if(arr[i].length> arr[a].length){
-                    id++;
-                }
-                sortedArrays[id] = sortedArray;
             }
         }
-        return sortedArrays;
+        return arr;
     }
 
 }
